@@ -16,8 +16,7 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    private final Logger LOGGER =
-            LoggerFactory.getLogger(name:DepartmentController.class); // Logger
+    private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class); // Logger
 
     @PostMapping("/departments")    //// Hibernate Validation
     public Department saveDepartment(@Valid @RequestBody Department department){
