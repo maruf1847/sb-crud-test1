@@ -2,6 +2,8 @@ package com.example.cruddemo.controller;
 
 import com.example.cruddemo.entity.Department;
 import com.example.cruddemo.service.DepartmentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,13 +16,18 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @PostMapping("/departments")    //// Hibernate Validation @Valid
+    private final Logger LOGGER =
+            LoggerFactory.getLogger(name:DepartmentController.class); // Logger
+
+    @PostMapping("/departments")    //// Hibernate Validation
     public Department saveDepartment(@Valid @RequestBody Department department){
+        LOGGER.info("Inside saveDepartment of DepartmentController"); //Logger
         return departmentService.saveDepartment(department);
     }
 
     @GetMapping("/departments")
     public List<Department> fetchDepartmentList(){
+        LOGGER.info("Inside getDepartment of DepartmentController"); //Logger
         return departmentService.fetchDepartmentList();
     }
 
